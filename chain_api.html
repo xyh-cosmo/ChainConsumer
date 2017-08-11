@@ -1,0 +1,1057 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Chain Consumer API &mdash; ChainConsumer 0.21 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/theme_override.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="ChainConsumer 0.21 documentation" href="index.html"/>
+        <link rel="prev" title="Plot Many Things For Fun!" href="examples/more/plot_many.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ChainConsumer
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.21
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chain Consumer API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-methods">Basic Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotter-class">Plotter Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#analysis-class">Analysis Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#diagnostic-class">Diagnostic Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#model-comparison-class">Model Comparison Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#full-documentation">Full Documentation</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ChainConsumer</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Chain Consumer API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/chain_api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="chain-consumer-api">
+<span id="chain-api"></span><h1>Chain Consumer API<a class="headerlink" href="#chain-consumer-api" title="Permalink to this headline">¶</a></h1>
+<p>ChainConsumer has a number of different methods that can be access. In the latest version
+of ChainConsumer, the increasing number of methods has had them put into smaller classes within
+ChainConsumer.</p>
+<div class="section" id="basic-methods">
+<h2>Basic Methods<a class="headerlink" href="#basic-methods" title="Permalink to this headline">¶</a></h2>
+<p>The methods found in the ChainConsumer class itself all relate to add, manipulating, and configuring
+the chains fed in.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#chainconsumer.ChainConsumer.add_chain" title="chainconsumer.ChainConsumer.add_chain"><code class="xref py py-func docutils literal"><span class="pre">chainconsumer.ChainConsumer.add_chain()</span></code></a> - Add a chain!</li>
+<li><a class="reference internal" href="#chainconsumer.ChainConsumer.divide_chain" title="chainconsumer.ChainConsumer.divide_chain"><code class="xref py py-func docutils literal"><span class="pre">chainconsumer.ChainConsumer.divide_chain()</span></code></a> - Split a chain into multiple chains to inspect each walk.</li>
+<li><a class="reference internal" href="#chainconsumer.ChainConsumer.remove_chain" title="chainconsumer.ChainConsumer.remove_chain"><code class="xref py py-func docutils literal"><span class="pre">chainconsumer.ChainConsumer.remove_chain()</span></code></a> - Remove a chain.</li>
+<li><a class="reference internal" href="#chainconsumer.ChainConsumer.configure" title="chainconsumer.ChainConsumer.configure"><code class="xref py py-func docutils literal"><span class="pre">chainconsumer.ChainConsumer.configure()</span></code></a> - Configure ChainConsumer.</li>
+<li><a class="reference internal" href="#chainconsumer.ChainConsumer.configure_truth" title="chainconsumer.ChainConsumer.configure_truth"><code class="xref py py-func docutils literal"><span class="pre">chainconsumer.ChainConsumer.configure_truth()</span></code></a> - Configure how truth values are plotted.</li>
+</ul>
+</div>
+<div class="section" id="plotter-class">
+<h2>Plotter Class<a class="headerlink" href="#plotter-class" title="Permalink to this headline">¶</a></h2>
+<p>The plotter class, accessible via <code class="xref py py-obj docutils literal"><span class="pre">chainConsumer.plotter</span></code> contains the methods
+used for generating plots.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#chainconsumer.plotter.Plotter.plot" title="chainconsumer.plotter.Plotter.plot"><code class="xref py py-func docutils literal"><span class="pre">chainconsumer.plotter.Plotter.plot()</span></code></a> - Plot the posterior surfaces</li>
+<li><a class="reference internal" href="#chainconsumer.plotter.Plotter.plot_walks" title="chainconsumer.plotter.Plotter.plot_walks"><code class="xref py py-func docutils literal"><span class="pre">chainconsumer.plotter.Plotter.plot_walks()</span></code></a> - Plot the walks to visually inspect convergence.</li>
+<li><a class="reference internal" href="#chainconsumer.plotter.Plotter.plot_distributions" title="chainconsumer.plotter.Plotter.plot_distributions"><code class="xref py py-func docutils literal"><span class="pre">chainconsumer.plotter.Plotter.plot_distributions()</span></code></a> - Plot the marginalised distributions only.</li>
+</ul>
+</div>
+<div class="section" id="analysis-class">
+<h2>Analysis Class<a class="headerlink" href="#analysis-class" title="Permalink to this headline">¶</a></h2>
+<p>The plotter class, accessible via <code class="xref py py-obj docutils literal"><span class="pre">chainConsumer.analysis</span></code> contains the methods
+used for getting data or LaTeX analysis of the chains fed in.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#chainconsumer.analysis.Analysis.get_latex_table" title="chainconsumer.analysis.Analysis.get_latex_table"><code class="xref py py-func docutils literal"><span class="pre">chainconsumer.analysis.Analysis.get_latex_table()</span></code></a> - Return a LaTeX table of the parameter summaries.</li>
+<li><a class="reference internal" href="#chainconsumer.analysis.Analysis.get_parameter_text" title="chainconsumer.analysis.Analysis.get_parameter_text"><code class="xref py py-func docutils literal"><span class="pre">chainconsumer.analysis.Analysis.get_parameter_text()</span></code></a> - Return LaTeX text for specified parameter bounds.</li>
+<li><a class="reference internal" href="#chainconsumer.analysis.Analysis.get_summary" title="chainconsumer.analysis.Analysis.get_summary"><code class="xref py py-func docutils literal"><span class="pre">chainconsumer.analysis.Analysis.get_summary()</span></code></a> - Get the parameter bounds for your chains.</li>
+<li><a class="reference internal" href="#chainconsumer.analysis.Analysis.get_correlations" title="chainconsumer.analysis.Analysis.get_correlations"><code class="xref py py-func docutils literal"><span class="pre">chainconsumer.analysis.Analysis.get_correlations()</span></code></a> - Get the parameters and correlation matrix for a chain.</li>
+<li><a class="reference internal" href="#chainconsumer.analysis.Analysis.get_correlation_table" title="chainconsumer.analysis.Analysis.get_correlation_table"><code class="xref py py-func docutils literal"><span class="pre">chainconsumer.analysis.Analysis.get_correlation_table()</span></code></a> - Get a chain’s correlation matrix as a LaTeX table.</li>
+<li><a class="reference internal" href="#chainconsumer.analysis.Analysis.get_covariance" title="chainconsumer.analysis.Analysis.get_covariance"><code class="xref py py-func docutils literal"><span class="pre">chainconsumer.analysis.Analysis.get_covariance()</span></code></a> - Get the parameters and covariance matrix for a chain.</li>
+<li><a class="reference internal" href="#chainconsumer.analysis.Analysis.get_covariance_table" title="chainconsumer.analysis.Analysis.get_covariance_table"><code class="xref py py-func docutils literal"><span class="pre">chainconsumer.analysis.Analysis.get_covariance_table()</span></code></a> - Get a chain’s covariance matrix as a LaTeX table.</li>
+</ul>
+</div>
+<div class="section" id="diagnostic-class">
+<h2>Diagnostic Class<a class="headerlink" href="#diagnostic-class" title="Permalink to this headline">¶</a></h2>
+<p>The plotter class, accessible via <code class="xref py py-obj docutils literal"><span class="pre">chainConsumer.diagnostic</span></code> contains the methods
+used for checking chain convergence</p>
+<ul class="simple">
+<li><a class="reference internal" href="#chainconsumer.diagnostic.Diagnostic.gelman_rubin" title="chainconsumer.diagnostic.Diagnostic.gelman_rubin"><code class="xref py py-func docutils literal"><span class="pre">chainconsumer.diagnostic.Diagnostic.gelman_rubin()</span></code></a> - Run the Gelman-Rubin statistic on your chains.</li>
+<li><a class="reference internal" href="#chainconsumer.diagnostic.Diagnostic.geweke" title="chainconsumer.diagnostic.Diagnostic.geweke"><code class="xref py py-func docutils literal"><span class="pre">chainconsumer.diagnostic.Diagnostic.geweke()</span></code></a> - Run the Geweke statistic on your chains.</li>
+</ul>
+</div>
+<div class="section" id="model-comparison-class">
+<h2>Model Comparison Class<a class="headerlink" href="#model-comparison-class" title="Permalink to this headline">¶</a></h2>
+<p>The plotter class, accessible via <code class="xref py py-obj docutils literal"><span class="pre">chainConsumer.comparison</span></code> contains the methods
+used for comparing the chains from various models.</p>
+<ul class="simple">
+<li><code class="xref py py-func docutils literal"><span class="pre">chainconsumer.comparisons.Comparison.comparison.aic()</span></code> - Return the AICc values for all chains.</li>
+<li><code class="xref py py-func docutils literal"><span class="pre">chainconsumer.comparisons.Comparison.comparison.bic()</span></code> - Return the BIC values for all chains.</li>
+<li><code class="xref py py-func docutils literal"><span class="pre">chainconsumer.comparisons.Comparison.comparison.dic()</span></code> - Return the DIC values for all chains.</li>
+<li><code class="xref py py-func docutils literal"><span class="pre">chainconsumer.comparisons.Comparison.comparison.comparison_table()</span></code> - Return a LaTeX table comparing models as per the above methods.</li>
+</ul>
+<p>The full documentation can be found below.</p>
+</div>
+<div class="section" id="full-documentation">
+<h2>Full Documentation<a class="headerlink" href="#full-documentation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="chainconsumer.ChainConsumer">
+<em class="property">class </em><code class="descclassname">chainconsumer.</code><code class="descname">ChainConsumer</code><a class="headerlink" href="#chainconsumer.ChainConsumer" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class for consuming chains produced by an MCMC walk. Or grid searches. To make plots,
+figures, tables, diagnostics, you name it.</p>
+<dl class="method">
+<dt id="chainconsumer.ChainConsumer.add_chain">
+<code class="descname">add_chain</code><span class="sig-paren">(</span><em>chain</em>, <em>parameters=None</em>, <em>name=None</em>, <em>weights=None</em>, <em>posterior=None</em>, <em>walkers=None</em>, <em>grid=False</em>, <em>num_free_params=None</em>, <em>num_eff_data_points=None</em><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.ChainConsumer.add_chain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a chain to the consumer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>chain</strong> (<em>str|ndarray|dict</em>) – The chain to load. Normally a <code class="docutils literal"><span class="pre">numpy.ndarray</span></code>. If a string is found, it
+interprets the string as a filename and attempts to load it in. If a <code class="docutils literal"><span class="pre">dict</span></code>
+is passed in, it assumes the dict has keys of parameter names and values of
+an array of samples. Notice that using a dictionary puts the order of
+parameters in the output under the control of the python <code class="docutils literal"><span class="pre">dict.keys()</span></code> function.
+If you passed <code class="docutils literal"><span class="pre">grid</span></code> is set, you can pass in the parameter ranges in list form.</li>
+<li><strong>parameters</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – A list of parameter names, one for each column (dimension) in the chain. This parameter
+should remain <code class="docutils literal"><span class="pre">None</span></code> if a dictionary is given as <code class="docutils literal"><span class="pre">chain</span></code>, as the parameter names
+are taken from the dictionary keys.</li>
+<li><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the chain. Used when plotting multiple chains at once.</li>
+<li><strong>weights</strong> (<em>ndarray</em><em>, </em><em>optional</em>) – If given, uses this array to weight the samples in chain</li>
+<li><strong>posterior</strong> (<em>ndarray</em><em>, </em><em>optional</em>) – If given, records the log posterior for each sample in the chain</li>
+<li><strong>walkers</strong> (<em>int</em><em>, </em><em>optional</em>) – How many walkers went into creating the chain. Each walker should
+contribute the same number of steps, and should appear in contiguous
+blocks in the final chain.</li>
+<li><strong>grid</strong> (<em>boolean</em><em>, </em><em>optional</em>) – Whether the input is a flattened chain from a grid search instead of a Monte-Carlo
+chains. Note that when this is set, <code class="xref py py-obj docutils literal"><span class="pre">walkers</span></code> should not be set, and <code class="xref py py-obj docutils literal"><span class="pre">weights</span></code> should
+be set to the posterior evaluation for the grid point. <strong>Be careful</strong> when using
+a coarse grid of setting a high smoothing value, as this may oversmooth the posterior
+surface and give unreasonably large parameter bounds.</li>
+<li><strong>num_eff_data_points</strong> (<em>int|float</em><em>, </em><em>optional</em>) – The number of effective (independent) data points used in the model fitting. Not required
+for plotting, but required if loading in multiple chains to perform model comparison.</li>
+<li><strong>num_free_params</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of degrees of freedom in your model. Not required for plotting, but required if
+loading in multiple chains to perform model comparison.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Itself, to allow chaining calls.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#chainconsumer.ChainConsumer" title="chainconsumer.ChainConsumer">ChainConsumer</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chainconsumer.ChainConsumer.configure">
+<code class="descname">configure</code><span class="sig-paren">(</span><em>statistics='max'</em>, <em>max_ticks=5</em>, <em>plot_hists=True</em>, <em>flip=True</em>, <em>serif=True</em>, <em>sigma2d=True</em>, <em>sigmas=None</em>, <em>summary=None</em>, <em>bins=None</em>, <em>rainbow=None</em>, <em>colors=None</em>, <em>linestyles=None</em>, <em>linewidths=None</em>, <em>kde=False</em>, <em>smooth=None</em>, <em>cloud=None</em>, <em>shade=None</em>, <em>shade_alpha=None</em>, <em>shade_gradient=None</em>, <em>bar_shade=None</em>, <em>num_cloud=None</em>, <em>color_params=None</em>, <em>plot_color_params=False</em>, <em>cmaps=None</em>, <em>usetex=True</em>, <em>diagonal_tick_labels=True</em>, <em>label_font_size=12</em>, <em>tick_font_size=10</em>, <em>spacing=None</em>, <em>contour_labels=None</em>, <em>contour_label_font_size=10</em>, <em>legend_kwargs=None</em>, <em>legend_location=None</em>, <em>legend_artists=None</em>, <em>legend_color_text=True</em>, <em>watermark_text_kwargs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.ChainConsumer.configure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure the general plotting parameters common across the bar
+and contour plots.</p>
+<p>If you do not call this explicitly, the <code class="xref py py-func docutils literal"><span class="pre">plot()</span></code>
+method will invoke this method automatically.</p>
+<p>Please ensure that you call this method <em>after</em> adding all the relevant data to the
+chain consumer, as the consume changes configuration values depending on
+the supplied data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>statistics</strong> (<em>string|list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – Which sort of statistics to use. Defaults to <code class="xref py py-obj docutils literal"><span class="pre">&quot;max&quot;</span></code> for maximum likelihood
+statistics. Other available options are <code class="xref py py-obj docutils literal"><span class="pre">&quot;mean&quot;</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">&quot;cumulative&quot;</span></code>. In the
+very, very rare case you want to enable different statistics for different
+chains, you can pass in a list of strings.</li>
+<li><strong>max_ticks</strong> (<em>int</em><em>, </em><em>optional</em>) – The maximum number of ticks to use on the plots</li>
+<li><strong>plot_hists</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to plot marginalised distributions or not</li>
+<li><strong>flip</strong> (<em>bool</em><em>, </em><em>optional</em>) – Set to false if, when plotting only two parameters, you do not want it to
+rotate the histogram so that it is horizontal.</li>
+<li><strong>sigma2d</strong> (<em>bool</em><em>, </em><em>optional</em>) – Defaults to <code class="xref py py-obj docutils literal"><span class="pre">True</span></code>. When <code class="xref py py-obj docutils literal"><span class="pre">False</span></code>, uses <span class="math">\(\sigma\)</span> levels for 1D Gaussians - ie confidence
+levels of 68% and 95%. When <code class="xref py py-obj docutils literal"><span class="pre">True</span></code>, uses the confidence levels for 2D Gaussians, where 1 and 2
+<span class="math">\(\sigma\)</span> represents 39% and 86% confidence levels respectively.</li>
+<li><strong>sigmas</strong> (<em>np.array</em><em>, </em><em>optional</em>) – The <span class="math">\(\sigma\)</span> contour levels to plot. Defaults to [0, 1, 2, 3] for a single chain
+and [0, 1, 2] for multiple chains. The leading zero is required if you don’t want
+your surfaces to have a hole in them.</li>
+<li><strong>serif</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to display ticks and labels with serif font.</li>
+<li><strong>summary</strong> (<em>bool</em><em>, </em><em>optional</em>) – If overridden, sets whether parameter summaries should be set as axis titles.
+Will not work if you have multiple chains</li>
+<li><strong>bins</strong> (<em>int|float</em><em>,</em><em>list</em><em>[</em><em>int|float</em><em>]</em><em>, </em><em>optional</em>) – The number of bins to use. By default uses <span class="math">\(\frac{\sqrt{n}}{10}\)</span>, where
+<span class="math">\(n\)</span> are the number of data points. Giving an integer will set the number
+of bins to the given value. Giving a float will scale the number of bins, such
+that giving <code class="docutils literal"><span class="pre">bins=1.5</span></code> will result in using <span class="math">\(\frac{1.5\sqrt{n}}{10}\)</span> bins.
+Note this parameter is most useful if <code class="xref py py-obj docutils literal"><span class="pre">kde=False</span></code> is also passed, so you
+can actually see the bins and not a KDE.</li>
+<li><strong>rainbow</strong> (<em>bool|list</em><em>[</em><em>bool</em><em>]</em><em>, </em><em>optional</em>) – Set to True to force use of rainbow colours</li>
+<li><strong>colors</strong> (<em>str</em><em>(</em><em>hex</em><em>)</em><em>|list</em><em>[</em><em>str</em><em>(</em><em>hex</em><em>)</em><em>]</em><em>, </em><em>optional</em>) – Provide a list of colours to use for each chain. If you provide more chains
+than colours, you <em>will</em> get the rainbow colour spectrum. If you only pass
+one colour, all chains are set to this colour. This probably won’t look good.</li>
+<li><strong>linestyles</strong> (<em>str|list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – Provide a list of line styles to plot the contours and marginalised
+distributions with. By default, this will become a list of solid lines. If a
+string is passed instead of a list, this style is used for all chains.</li>
+<li><strong>linewidths</strong> (<em>float|list</em><em>[</em><em>float</em><em>]</em><em>, </em><em>optional</em>) – Provide a list of line widths to plot the contours and marginalised
+distributions with. By default, this is a width of 1. If a float
+is passed instead of a list, this width is used for all chains.</li>
+<li><strong>kde</strong> (<em>bool|float|list</em><em>[</em><em>bool|float</em><em>]</em><em>, </em><em>optional</em>) – Whether to use a Gaussian KDE to smooth marginalised posteriors. If false, uses
+bins and linear interpolation, so ensure you have plenty of samples if your
+distribution is highly non-gaussian. Due to the slowness of performing a
+KDE on all data, it is often useful to disable this before producing final
+plots. If float, scales the width of the KDE bandpass manually.</li>
+<li><strong>smooth</strong> (<em>int|list</em><em>[</em><em>int</em><em>]</em><em>, </em><em>optional</em>) – Defaults to 3. How much to smooth the marginalised distributions using a gaussian filter.
+If <code class="docutils literal"><span class="pre">kde</span></code> is set to true, this parameter is ignored. Setting it to either
+<code class="docutils literal"><span class="pre">0</span></code>, <code class="docutils literal"><span class="pre">False</span></code> disables smoothing. For grid data, smoothing
+is set to 0 by default, not 3.</li>
+<li><strong>cloud</strong> (<em>bool|list</em><em>[</em><em>bool</em><em>]</em><em>, </em><em>optional</em>) – If set, overrides the default behaviour and plots the cloud or not</li>
+<li><strong>shade</strong> (<em>bool|list</em><em>[</em><em>bool</em><em>] </em><em>optional</em>) – If set, overrides the default behaviour and plots filled contours or not. If a list of
+bools is passed, you can turn shading on or off for specific chains.</li>
+<li><strong>shade_alpha</strong> (<em>float|list</em><em>[</em><em>float</em><em>]</em><em>, </em><em>optional</em>) – Filled contour alpha value override. Default is 1.0. If a list is passed, you can set the
+shade opacity for specific chains.</li>
+<li><strong>shade_gradient</strong> (<em>float|list</em><em>[</em><em>float</em><em>]</em><em>, </em><em>optional</em>) – How much to vary colours in different contour levels.</li>
+<li><strong>bar_shade</strong> (<em>bool|list</em><em>[</em><em>bool</em><em>]</em><em>, </em><em>optional</em>) – If set to true, shades in confidence regions in under histogram. By default
+this happens if you less than 3 chains, but is disabled if you are comparing
+more chains. You can pass a list if you wish to shade some chains but not others.</li>
+<li><strong>num_cloud</strong> (<em>int|list</em><em>[</em><em>int</em><em>]</em><em>, </em><em>optional</em>) – The number of scatter points to show when enabling <code class="xref py py-obj docutils literal"><span class="pre">cloud</span></code> or setting one of the parameters
+to colour scatter. Defaults to 15k per chain.</li>
+<li><strong>color_params</strong> (<em>str|list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – The name of the parameter to use for the colour scatter. Defaults to none, for no colour. If set
+to ‘weights’, ‘log_weights’, or ‘posterior’ (without the quotes), and that is not a parameter in the chain,
+it will respectively  use the weights, log weights, or posterior, to colour the points.</li>
+<li><strong>plot_color_params</strong> (<em>bool|list</em><em>[</em><em>bool</em><em>]</em><em>, </em><em>optional</em>) – Whether or not the colour parameter should also be plotted as a posterior surface.</li>
+<li><strong>cmaps</strong> (<em>str|list</em><em>[</em><em>str</em><em>]</em>) – The matplotlib colourmap to use in the <code class="xref py py-obj docutils literal"><span class="pre">colour_param</span></code>. If you have multiple <a href="#id1"><span class="problematic" id="id2">`</span></a>color_param`s, you can
+specific a different cmap for each variable. By default ChainConsumer will cycle between several
+cmaps.</li>
+<li><strong>usetex</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether or not to parse text as LaTeX in plots.</li>
+<li><strong>diagonal_tick_labels</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to display tick labels on a 45 degree angle.</li>
+<li><strong>label_font_size</strong> (<em>int|float</em><em>, </em><em>optional</em>) – The font size for plot axis labels and axis titles if summaries are configured to display.</li>
+<li><strong>tick_font_size</strong> (<em>int|float</em><em>, </em><em>optional</em>) – The font size for the tick labels in the plots.</li>
+<li><strong>spacing</strong> (<em>float</em><em>, </em><em>optional</em>) – The amount of spacing to add between plots. Defaults to <code class="xref py py-obj docutils literal"><span class="pre">None</span></code>, which equates to 1.0 for less
+than 6 dimensions and 0.0 for higher dimensions.</li>
+<li><strong>contour_labels</strong> (<em>string</em><em>, </em><em>optional</em>) – If unset do not plot contour labels. If set to “confidence”, label the using confidence
+intervals. If set to “sigma”, labels using sigma.</li>
+<li><strong>contour_label_font_size</strong> (<em>int|float</em><em>, </em><em>optional</em>) – The font size for contour labels, if they are enabled.</li>
+<li><strong>legend_kwargs</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra arguments to pass to the legend api.</li>
+<li><strong>legend_location</strong> (<em>tuple</em><em>(</em><em>int</em><em>,</em><em>int</em><em>)</em><em>, </em><em>optional</em>) – Specifies the subplot in which to locate the legend. By default, this will be (0, -1),
+corresponding to the top right subplot if there are more than two parameters,
+and the bottom left plot for only two parameters with flip on.
+For having the legend in the primary subplot
+in the bottom left, set to (-1,0).</li>
+<li><strong>legend_artists</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to include hide artists in the legend. If all linestyles and line widths are identical,
+this will default to false (as only the colours change). Otherwise it will be true.</li>
+<li><strong>legend_color_text</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to colour the legend text.</li>
+<li><strong>watermark_text_kwargs</strong> (<em>dict</em><em>, </em><em>optional</em>) – Options to pass to the fontdict property when generating text for the watermark.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Itself, to allow chaining calls.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#chainconsumer.ChainConsumer" title="chainconsumer.ChainConsumer">ChainConsumer</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chainconsumer.ChainConsumer.configure_truth">
+<code class="descname">configure_truth</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.ChainConsumer.configure_truth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure the arguments passed to the <code class="docutils literal"><span class="pre">axvline</span></code> and <code class="docutils literal"><span class="pre">axhline</span></code>
+methods when plotting truth values.</p>
+<p>If you do not call this explicitly, the <code class="xref py py-func docutils literal"><span class="pre">plot()</span></code> method will
+invoke this method automatically.</p>
+<p>Recommended to set the parameters <code class="docutils literal"><span class="pre">linestyle</span></code>, <code class="docutils literal"><span class="pre">color</span></code> and/or <code class="docutils literal"><span class="pre">alpha</span></code>
+if you want some basic control.</p>
+<p>Default is to use an opaque black dashed line.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kwargs</strong> (<em>dict</em>) – The keyword arguments to unwrap when calling <code class="docutils literal"><span class="pre">axvline</span></code> and <code class="docutils literal"><span class="pre">axhline</span></code>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Itself, to allow chaining calls.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chainconsumer.ChainConsumer" title="chainconsumer.ChainConsumer">ChainConsumer</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chainconsumer.ChainConsumer.divide_chain">
+<code class="descname">divide_chain</code><span class="sig-paren">(</span><em>chain=0</em><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.ChainConsumer.divide_chain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a ChainConsumer instance containing all the walks of a given chain
+as individual chains themselves.</p>
+<p>This method might be useful if, for example, your chain was made using
+MCMC with 4 walkers. To check the sampling of all 4 walkers agree, you could
+call this to get a ChainConsumer instance with one chain for ech of the
+four walks. If you then plot, hopefully all four contours
+you would see agree.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>chain</strong> (<em>int|str</em><em>, </em><em>optional</em>) – The index or name of the chain you want divided</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A new ChainConsumer instance with the same settings as the parent instance, containing
+<code class="docutils literal"><span class="pre">num_walker</span></code> chains.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chainconsumer.ChainConsumer" title="chainconsumer.ChainConsumer">ChainConsumer</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chainconsumer.ChainConsumer.remove_chain">
+<code class="descname">remove_chain</code><span class="sig-paren">(</span><em>chain=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.ChainConsumer.remove_chain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes a chain from ChainConsumer. Calling this will require any configurations set to be redone!</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>chain</strong> (<em>int|str</em><em>, </em><em>list</em><em>[</em><em>str|int</em><em>]</em>) – The chain(s) to remove. You can pass in either the chain index, or the chain name, to remove it.
+By default removes the last chain added.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Itself, to allow chaining calls.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chainconsumer.ChainConsumer" title="chainconsumer.ChainConsumer">ChainConsumer</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="chainconsumer.analysis.Analysis">
+<em class="property">class </em><code class="descclassname">chainconsumer.analysis.</code><code class="descname">Analysis</code><span class="sig-paren">(</span><em>parent</em><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.analysis.Analysis" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="chainconsumer.analysis.Analysis.get_correlation_table">
+<code class="descname">get_correlation_table</code><span class="sig-paren">(</span><em>chain=0</em>, <em>parameters=None</em>, <em>caption='Parameter Correlations'</em>, <em>label='tab:parameter_correlations'</em><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.analysis.Analysis.get_correlation_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a LaTeX table of parameter correlations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>chain</strong> (<em>int|str</em><em>, </em><em>optional</em>) – The chain index or name. Defaults to first chain.</li>
+<li><strong>parameters</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – The list of parameters to compute correlations. Defaults to all parameters
+for the given chain.</li>
+<li><strong>caption</strong> (<em>str</em><em>, </em><em>optional</em>) – The LaTeX table caption.</li>
+<li><strong>label</strong> (<em>str</em><em>, </em><em>optional</em>) – The LaTeX table label.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The LaTeX table ready to go!</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chainconsumer.analysis.Analysis.get_correlations">
+<code class="descname">get_correlations</code><span class="sig-paren">(</span><em>chain=0</em>, <em>parameters=None</em><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.analysis.Analysis.get_correlations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a chain and returns the correlation between chain parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>chain</strong> (<em>int|str</em><em>, </em><em>optional</em>) – The chain index or name. Defaults to first chain.</li>
+<li><strong>parameters</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – The list of parameters to compute correlations. Defaults to all parameters
+for the given chain.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The first index giving a list of parameter names, the second index being the
+2D correlation matrix.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chainconsumer.analysis.Analysis.get_covariance">
+<code class="descname">get_covariance</code><span class="sig-paren">(</span><em>chain=0</em>, <em>parameters=None</em><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.analysis.Analysis.get_covariance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a chain and returns the covariance between chain parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>chain</strong> (<em>int|str</em><em>, </em><em>optional</em>) – The chain index or name. Defaults to first chain.</li>
+<li><strong>parameters</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – The list of parameters to compute correlations. Defaults to all parameters
+for the given chain.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The first index giving a list of parameter names, the second index being the
+2D covariance matrix.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chainconsumer.analysis.Analysis.get_covariance_table">
+<code class="descname">get_covariance_table</code><span class="sig-paren">(</span><em>chain=0</em>, <em>parameters=None</em>, <em>caption='Parameter Covariance'</em>, <em>label='tab:parameter_covariance'</em><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.analysis.Analysis.get_covariance_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a LaTeX table of parameter covariance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>chain</strong> (<em>int|str</em><em>, </em><em>optional</em>) – The chain index or name. Defaults to first chain.</li>
+<li><strong>parameters</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – The list of parameters to compute correlations. Defaults to all parameters
+for the given chain.</li>
+<li><strong>caption</strong> (<em>str</em><em>, </em><em>optional</em>) – The LaTeX table caption.</li>
+<li><strong>label</strong> (<em>str</em><em>, </em><em>optional</em>) – The LaTeX table label.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The LaTeX table ready to go!</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chainconsumer.analysis.Analysis.get_latex_table">
+<code class="descname">get_latex_table</code><span class="sig-paren">(</span><em>parameters=None</em>, <em>transpose=False</em>, <em>caption=None</em>, <em>label='tab:model_params'</em>, <em>hlines=True</em>, <em>blank_fill='--'</em><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.analysis.Analysis.get_latex_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a LaTeX table from parameter summaries.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>parameters</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – A list of what parameters to include in the table. By default, includes all parameters</li>
+<li><strong>transpose</strong> (<em>bool</em><em>, </em><em>optional</em>) – Defaults to False, which gives each column as a parameter, each chain (framework)
+as a row. You can swap it so that you have a parameter each row and a framework
+each column by setting this to True</li>
+<li><strong>caption</strong> (<em>str</em><em>, </em><em>optional</em>) – If you want to generate a caption for the table through Python, use this.
+Defaults to an empty string</li>
+<li><strong>label</strong> (<em>str</em><em>, </em><em>optional</em>) – If you want to generate a label for the table through Python, use this.
+Defaults to an empty string</li>
+<li><strong>hlines</strong> (<em>bool</em><em>, </em><em>optional</em>) – Inserts <code class="docutils literal"><span class="pre">\hline</span></code> before and after the header, and at the end of table.</li>
+<li><strong>blank_fill</strong> (<em>str</em><em>, </em><em>optional</em>) – If a framework does not have a particular parameter, will fill that cell of
+the table with this string.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the LaTeX table.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chainconsumer.analysis.Analysis.get_parameter_text">
+<code class="descname">get_parameter_text</code><span class="sig-paren">(</span><em>lower</em>, <em>maximum</em>, <em>upper</em>, <em>wrap=False</em><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.analysis.Analysis.get_parameter_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates LaTeX appropriate text from marginalised parameter bounds.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>lower</strong> (<em>float</em>) – The lower bound on the parameter</li>
+<li><strong>maximum</strong> (<em>float</em>) – The value of the parameter with maximum probability</li>
+<li><strong>upper</strong> (<em>float</em>) – The upper bound on the parameter</li>
+<li><strong>wrap</strong> (<em>bool</em>) – Wrap output text in dollar signs for LaTeX</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The formatted text given the parameter bounds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chainconsumer.analysis.Analysis.get_summary">
+<code class="descname">get_summary</code><span class="sig-paren">(</span><em>squeeze=True</em>, <em>parameters=None</em><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.analysis.Analysis.get_summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a summary of the marginalised parameter distributions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>squeeze</strong> (<em>bool</em><em>, </em><em>optional</em>) – Squeeze the summaries. If you only have one chain, squeeze will not return
+a length one list, just the single summary. If this is false, you will
+get a length one list.</li>
+<li><strong>parameters</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – A list of parameters which to generate summaries for.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">One entry per chain, parameter bounds stored in dictionary with parameter as key</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of dictionaries</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="chainconsumer.comparisons.Comparison">
+<em class="property">class </em><code class="descclassname">chainconsumer.comparisons.</code><code class="descname">Comparison</code><span class="sig-paren">(</span><em>parent</em><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.comparisons.Comparison" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="chainconsumer.comparisons.Comparison.aic">
+<code class="descname">aic</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.comparisons.Comparison.aic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the corrected Akaike Information Criterion (AICc) for all chains loaded into ChainConsumer.</p>
+<p>If a chain does not have a posterior, number of data points, and number of free parameters
+loaded, this method will return <code class="xref py py-obj docutils literal"><span class="pre">None</span></code> for that chain. Formally, the AIC is defined as</p>
+<div class="math">
+\[AIC \equiv -2\ln(P) + 2k,\]</div>
+<p>where <span class="math">\(P\)</span> represents the posterior, and <span class="math">\(k\)</span> the number of model parameters. The AICc
+is then defined as</p>
+<div class="math">
+\[AIC_c \equiv AIC + \frac{2k(k+1)}{N-k-1},\]</div>
+<p>where <span class="math">\(N\)</span> represents the number of independent data points used in the model fitting.
+The AICc is a correction for the AIC to take into account finite chain sizes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of all the AICc values - one per chain, in the order in which the chains were added.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list[float]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chainconsumer.comparisons.Comparison.bic">
+<code class="descname">bic</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.comparisons.Comparison.bic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the corrected Bayesian Information Criterion (BIC) for all chains loaded into ChainConsumer.</p>
+<p>If a chain does not have a posterior, number of data points, and number of free parameters
+loaded, this method will return <code class="xref py py-obj docutils literal"><span class="pre">None</span></code> for that chain. Formally, the BIC is defined as</p>
+<div class="math">
+\[BIC \equiv -2\ln(P) + k \ln(N),\]</div>
+<p>where <span class="math">\(P\)</span> represents the posterior, <span class="math">\(k\)</span> the number of model parameters and <span class="math">\(N\)</span>
+the number of independent data points used in the model fitting.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of all the BIC values - one per chain, in the order in which the chains were added.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list[float]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chainconsumer.comparisons.Comparison.comparison_table">
+<code class="descname">comparison_table</code><span class="sig-paren">(</span><em>caption=None</em>, <em>label='tab:model_comp'</em>, <em>hlines=True</em>, <em>aic=True</em>, <em>bic=True</em>, <em>dic=True</em>, <em>sort='bic'</em>, <em>descending=True</em><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.comparisons.Comparison.comparison_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a LaTeX ready table of model comparisons.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>caption</strong> (<em>str</em><em>, </em><em>optional</em>) – The table caption to insert.</li>
+<li><strong>label</strong> (<em>str</em><em>, </em><em>optional</em>) – The table label to insert.</li>
+<li><strong>hlines</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to insert hlines in the table or not.</li>
+<li><strong>aic</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to include a column for AICc or not.</li>
+<li><strong>bic</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to include a column for BIC or not.</li>
+<li><strong>dic</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to include a column for DIC or not.</li>
+<li><strong>sort</strong> (<em>str</em><em>, </em><em>optional</em>) – How to sort the models. Should be one of “bic”, “aic” or “dic”.</li>
+<li><strong>descending</strong> (<em>bool</em><em>, </em><em>optional</em>) – The sort order.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A LaTeX table to be copied into your document.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chainconsumer.comparisons.Comparison.dic">
+<code class="descname">dic</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.comparisons.Comparison.dic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the corrected Deviance Information Criterion (DIC) for all chains loaded into ChainConsumer.</p>
+<p>If a chain does not have a posterior, this method will return <code class="xref py py-obj docutils literal"><span class="pre">None</span></code> for that chain. <strong>Note that
+the DIC metric is only valid on posterior surfaces which closely resemble multivariate normals!</strong>
+Formally, we follow Liddle (2007) and first define <em>Bayesian complexity</em> as</p>
+<div class="math">
+\[p_D = \bar{D}(\theta) - D(\bar{\theta}),\]</div>
+<p>where <span class="math">\(D(\theta) = -2\ln(P(\theta)) + C\)</span> is the deviance, where <span class="math">\(P\)</span> is the posterior
+and <span class="math">\(C\)</span> a constant. From here the DIC is defined as</p>
+<div class="math">
+\[DIC \equiv D(\bar{\theta}) + 2p_D = \bar{D}(\theta) + p_D.\]</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of all the DIC values - one per chain, in the order in which the chains were added.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list[float]</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<p>[1] Andrew R. Liddle, “Information criteria for astrophysical model selection”, MNRAS (2007)</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="chainconsumer.diagnostic.Diagnostic">
+<em class="property">class </em><code class="descclassname">chainconsumer.diagnostic.</code><code class="descname">Diagnostic</code><span class="sig-paren">(</span><em>parent</em><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.diagnostic.Diagnostic" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="chainconsumer.diagnostic.Diagnostic.gelman_rubin">
+<code class="descname">gelman_rubin</code><span class="sig-paren">(</span><em>chain=None</em>, <em>threshold=0.05</em><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.diagnostic.Diagnostic.gelman_rubin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the Gelman Rubin diagnostic on the supplied chains.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>chain</strong> (<em>int|str</em><em>, </em><em>optional</em>) – Which chain to run the diagnostic on. By default, this is <code class="xref py py-obj docutils literal"><span class="pre">None</span></code>,
+which will run the diagnostic on all chains. You can also
+supply and integer (the chain index) or a string, for the chain
+name (if you set one).</li>
+<li><strong>threshold</strong> (<em>float</em><em>, </em><em>optional</em>) – The maximum deviation permitted from 1 for the final value
+<span class="math">\(\hat{R}\)</span></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">whether or not the chains pass the test</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>I follow PyMC in calculating the Gelman-Rubin statistic, where,
+having <span class="math">\(m\)</span> chains of length <span class="math">\(n\)</span>, we compute</p>
+<div class="math">
+\[ \begin{align}\begin{aligned}B = \frac{n}{m-1} \sum_{j=1}^{m} \left(\bar{\theta}_{.j} - \bar{\theta}_{..}\right)^2\\W = \frac{1}{m} \sum_{j=1}^{m} \left[ \frac{1}{n-1} \sum_{i=1}^{n} \left( \theta_{ij} - \bar{\theta_{.j}}\right)^2 \right]\end{aligned}\end{align} \]</div>
+<p>where <span class="math">\(\theta\)</span> represents each model parameter. We then compute
+<span class="math">\(\hat{V} = \frac{n_1}{n}W + \frac{1}{n}B\)</span>, and have our convergence ratio
+<span class="math">\(\hat{R} = \sqrt{\frac{\hat{V}}{W}}\)</span>. We check that for all parameters,
+this ratio deviates from unity by less than the supplied threshold.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chainconsumer.diagnostic.Diagnostic.geweke">
+<code class="descname">geweke</code><span class="sig-paren">(</span><em>chain=None</em>, <em>first=0.1</em>, <em>last=0.5</em>, <em>threshold=0.05</em><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.diagnostic.Diagnostic.geweke" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the Geweke diagnostic on the supplied chains.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>chain</strong> (<em>int|str</em><em>, </em><em>optional</em>) – Which chain to run the diagnostic on. By default, this is <code class="xref py py-obj docutils literal"><span class="pre">None</span></code>,
+which will run the diagnostic on all chains. You can also
+supply and integer (the chain index) or a string, for the chain
+name (if you set one).</li>
+<li><strong>first</strong> (<em>float</em><em>, </em><em>optional</em>) – The amount of the start of the chain to use</li>
+<li><strong>last</strong> (<em>float</em><em>, </em><em>optional</em>) – The end amount of the chain to use</li>
+<li><strong>threshold</strong> (<em>float</em><em>, </em><em>optional</em>) – The p-value to use when testing for normality.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">whether or not the chains pass the test</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="chainconsumer.plotter.Plotter">
+<em class="property">class </em><code class="descclassname">chainconsumer.plotter.</code><code class="descname">Plotter</code><span class="sig-paren">(</span><em>parent</em><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.plotter.Plotter" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="chainconsumer.plotter.Plotter.plot">
+<code class="descname">plot</code><span class="sig-paren">(</span><em>figsize='GROW'</em>, <em>parameters=None</em>, <em>chains=None</em>, <em>extents=None</em>, <em>filename=None</em>, <em>display=False</em>, <em>truth=None</em>, <em>legend=None</em>, <em>blind=None</em>, <em>watermark=None</em><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.plotter.Plotter.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the chain!</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>figsize</strong> (<em>str|tuple</em><em>(</em><em>float</em><em>)</em><em>|float</em><em>, </em><em>optional</em>) – The figure size to generate. Accepts a regular two tuple of size in inches,
+or one of several key words. The default value of <code class="docutils literal"><span class="pre">COLUMN</span></code> creates a figure
+of appropriate size of insertion into an A4 LaTeX document in two-column mode.
+<code class="docutils literal"><span class="pre">PAGE</span></code> creates a full page width figure. <code class="docutils literal"><span class="pre">GROW</span></code> creates an image that
+scales with parameters (1.5 inches per parameter). String arguments are not
+case sensitive. If you pass a float, it will scale the default <code class="docutils literal"><span class="pre">GROW</span></code> by
+that amount, so <code class="docutils literal"><span class="pre">2.0</span></code> would result in a plot 3 inches per parameter.</li>
+<li><strong>parameters</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>|int</em><em>, </em><em>optional</em>) – If set, only creates a plot for those specific parameters (if list). If an
+integer is given, only plots the fist so many parameters.</li>
+<li><strong>chains</strong> (<em>int|str</em><em>, </em><em>list</em><em>[</em><em>str|int</em><em>]</em><em>, </em><em>optional</em>) – Used to specify which chain to show if more than one chain is loaded in.
+Can be an integer, specifying the
+chain index, or a str, specifying the chain name.</li>
+<li><strong>extents</strong> (<em>list</em><em>[</em><em>tuple</em><em>[</em><em>float</em><em>]</em><em>] or </em><em>dict</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – Extents are given as two-tuples. You can pass in a list the same size as
+parameters (or default parameters if you don’t specify parameters),
+or as a dictionary.</li>
+<li><strong>filename</strong> (<em>str</em><em>, </em><em>optional</em>) – If set, saves the figure to this location</li>
+<li><strong>display</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, shows the figure using <code class="docutils literal"><span class="pre">plt.show()</span></code>.</li>
+<li><strong>truth</strong> (<em>list</em><em>[</em><em>float</em><em>] or </em><em>dict</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – A list of truth values corresponding to parameters, or a dictionary of
+truth values indexed by key</li>
+<li><strong>legend</strong> (<em>bool</em><em>, </em><em>optional</em>) – If true, creates a legend in your plot using the chain names.</li>
+<li><strong>blind</strong> (<em>bool|string|list</em><em>[</em><em>string</em><em>]</em><em>, </em><em>optional</em>) – Whether to blind axes values. Can be set to <code class="xref py py-obj docutils literal"><span class="pre">True</span></code> to blind all parameters,
+or can pass in a string (or list of strings) which specify the parameters to blind.</li>
+<li><strong>watermark</strong> (<em>str</em><em>, </em><em>optional</em>) – A watermark to add to the figure</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the matplotlib figure</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">figure</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chainconsumer.plotter.Plotter.plot_distributions">
+<code class="descname">plot_distributions</code><span class="sig-paren">(</span><em>parameters=None</em>, <em>truth=None</em>, <em>extents=None</em>, <em>display=False</em>, <em>filename=None</em>, <em>chains=None</em>, <em>col_wrap=4</em>, <em>figsize=None</em>, <em>blind=None</em><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.plotter.Plotter.plot_distributions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the 1D parameter distributions for verification purposes.</p>
+<p>This plot is more for a sanity or consistency check than for use with final results.
+Plotting this before plotting with <code class="xref py py-func docutils literal"><span class="pre">plot()</span></code> allows you to quickly see if the
+chains give well behaved distributions, or if certain parameters are suspect
+or require a greater burn in period.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>parameters</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>|int</em><em>, </em><em>optional</em>) – Specify a subset of parameters to plot. If not set, all parameters are plotted.
+If an integer is given, only the first so many parameters are plotted.</li>
+<li><strong>truth</strong> (<em>list</em><em>[</em><em>float</em><em>]</em><em>|dict</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – A list of truth values corresponding to parameters, or a dictionary of
+truth values keyed by the parameter.</li>
+<li><strong>extents</strong> (<em>list</em><em>[</em><em>tuple</em><em>]</em><em>|dict</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – A list of two-tuples for plot extents per parameter, or a dictionary of
+extents keyed by the parameter.</li>
+<li><strong>display</strong> (<em>bool</em><em>, </em><em>optional</em>) – If set, shows the plot using <code class="docutils literal"><span class="pre">plt.show()</span></code></li>
+<li><strong>filename</strong> (<em>str</em><em>, </em><em>optional</em>) – If set, saves the figure to the filename</li>
+<li><strong>chains</strong> (<em>int|str</em><em>, </em><em>list</em><em>[</em><em>str|int</em><em>]</em><em>, </em><em>optional</em>) – Used to specify which chain to show if more than one chain is loaded in.
+Can be an integer, specifying the
+chain index, or a str, specifying the chain name.</li>
+<li><strong>col_wrap</strong> (<em>int</em><em>, </em><em>optional</em>) – How many columns to plot before wrapping.</li>
+<li><strong>figsize</strong> (<em>tuple</em><em>(</em><em>float</em><em>)</em><em>|float</em><em>, </em><em>optional</em>) – Either a tuple specifying the figure size or a float scaling factor.</li>
+<li><strong>blind</strong> (<em>bool|string|list</em><em>[</em><em>string</em><em>]</em><em>, </em><em>optional</em>) – Whether to blind axes values. Can be set to <code class="xref py py-obj docutils literal"><span class="pre">True</span></code> to blind all parameters,
+or can pass in a string (or list of strings) which specify the parameters to blind.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the matplotlib figure created</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">figure</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chainconsumer.plotter.Plotter.plot_walks">
+<code class="descname">plot_walks</code><span class="sig-paren">(</span><em>parameters=None</em>, <em>truth=None</em>, <em>extents=None</em>, <em>display=False</em>, <em>filename=None</em>, <em>chains=None</em>, <em>convolve=None</em>, <em>figsize=None</em>, <em>plot_weights=True</em>, <em>plot_posterior=True</em>, <em>log_weight=None</em><span class="sig-paren">)</span><a class="headerlink" href="#chainconsumer.plotter.Plotter.plot_walks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the chain walk; the parameter values as a function of step index.</p>
+<p>This plot is more for a sanity or consistency check than for use with final results.
+Plotting this before plotting with <code class="xref py py-func docutils literal"><span class="pre">plot()</span></code> allows you to quickly see if the
+chains are well behaved, or if certain parameters are suspect
+or require a greater burn in period.</p>
+<p>The desired outcome is to see an unchanging distribution along the x-axis of the plot.
+If there are obvious tails or features in the parameters, you probably want
+to investigate.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>parameters</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>|int</em><em>, </em><em>optional</em>) – Specify a subset of parameters to plot. If not set, all parameters are plotted.
+If an integer is given, only the first so many parameters are plotted.</li>
+<li><strong>truth</strong> (<em>list</em><em>[</em><em>float</em><em>]</em><em>|dict</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – A list of truth values corresponding to parameters, or a dictionary of
+truth values keyed by the parameter.</li>
+<li><strong>extents</strong> (<em>list</em><em>[</em><em>tuple</em><em>]</em><em>|dict</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – A list of two-tuples for plot extents per parameter, or a dictionary of
+extents keyed by the parameter.</li>
+<li><strong>display</strong> (<em>bool</em><em>, </em><em>optional</em>) – If set, shows the plot using <code class="docutils literal"><span class="pre">plt.show()</span></code></li>
+<li><strong>filename</strong> (<em>str</em><em>, </em><em>optional</em>) – If set, saves the figure to the filename</li>
+<li><strong>chains</strong> (<em>int|str</em><em>, </em><em>list</em><em>[</em><em>str|int</em><em>]</em><em>, </em><em>optional</em>) – Used to specify which chain to show if more than one chain is loaded in.
+Can be an integer, specifying the
+chain index, or a str, specifying the chain name.</li>
+<li><strong>convolve</strong> (<em>int</em><em>, </em><em>optional</em>) – If set, overplots a smoothed version of the steps using <code class="docutils literal"><span class="pre">convolve</span></code> as
+the width of the smoothing filter.</li>
+<li><strong>figsize</strong> (<em>tuple</em><em>, </em><em>optional</em>) – If set, sets the created figure size.</li>
+<li><strong>plot_weights</strong> (<em>bool</em><em>, </em><em>optional</em>) – If true, plots the weight if they are available</li>
+<li><strong>plot_posterior</strong> (<em>bool</em><em>, </em><em>optional</em>) – If true, plots the log posterior if they are available</li>
+<li><strong>log_weight</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to display weights in log space or not. If None, the value is
+inferred by the mean weights of the plotted chains.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the matplotlib figure created</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">figure</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="examples/more/plot_many.html" class="btn btn-neutral" title="Plot Many Things For Fun!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2017, Samuel Hinton and contributors.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.21',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
